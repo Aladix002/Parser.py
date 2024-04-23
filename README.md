@@ -1,21 +1,22 @@
-# Implementační dokumentace k 1. úloze do IPP 2023/2024
+# Implementačná dokumentácia k 1. úlohe do IPP 2023/2024
 
 **Meno a priezvisko:** Filip Botlo  
 **Login:** xbotlo01
 
-## 1 Implementace
+## 1 Implementácia
 
-IPP parser je implementován v programovacím jazyku Python. Používá standardní knihovny na manipulaci s řetězci, regulární výrazy a práci s XML. Implementace se skládá z několika tříd, které spolupracují na načítání a zpracování kódu v jazyku IPPcode24.
+IPP parser je implementovaný v programovacom jazyku Python. Používa štandardné knižnice na manipuláciu so reťazcami, regulárne výrazy a prácu s XML. Implementácia sa skladá z niekoľkých tried, ktoré spolupracujú na načítaní a spracovaní kódu v jazyku IPPcode24.
 
-### 1.1 Zpracování kódu
+### 1.1 Spracovanie kódu
 
-IPP parser začíná analýzou vstupních argumentů. Pokud je přítomný argument `-help`, parser vypíše nápovědu. Samotné zpracování kódu probíhá ve funkci `parse()`. Parser čte vstupní řádky a postupně je zpracovává. Pro každý řádek vstupu se vytváří instance třídy `Instruction`, která reprezentuje jednotlivé instrukce programu. Na základě opcode instrukce se volá vhodná metoda pro zpracování dané instrukce. Funkce `parse()` využívá funkci `parse_instruction()`, která je zodpovědná za zpracování jednotlivých instrukcí.
+IPP parser začína analýzou vstupných argumentov. Ak je prítomný argument `-help`, parser vypíše nápovedu. Samotné spracovanie kódu prebieha vo funkcii `parse()`. Parser číta vstupné riadky a postupne ich spracováva. Pre každý riadok vstupu sa vytvára inštancia triedy `Instruction`, ktorá reprezentuje jednotlivé inštrukcie programu. Na základe opcode inštrukcie sa volá vhodná metóda pre spracovanie danej inštrukcie. Funkcia `parse()` využíva funkciu `parse_instruction()`, ktorá je zodpovedná za spracovanie jednotlivých inštrukcií.
 
-### 1.2 Zpracování instrukcí
+### 1.2 Spracovanie inštrukcií
 
-Při zpracování instrukce se kontroluje syntax a validita argumentů. Na základě opcode instrukce se určuje, jaké typy argumentů očekává a jak jsou zpracovávány. Metody pro zpracování instrukcí jsou definovány v rámci třídy `IPPParser`. Například, metoda `handle_defvar_pops()` se stará o zpracování instrukcí s opcode `DEFVAR` a `POPS`. Pro instrukci `DEFVAR` kontroluje, zda argument má správný formát a typ.
+Pri spracovaní inštrukcie sa kontroluje syntax a validita argumentov. Na základe opcode inštrukcie sa určuje, aké typy argumentov očakáva a ako sú spracované. Metódy pre spracovanie inštrukcií sú definované v rámci triedy `IPPParser`. Napríklad, metóda `handle_defvar_pops()` sa stará o spracovanie inštrukcií s opcode `DEFVAR` a `POPS`. Pre inštrukciu `DEFVAR` kontroluje, či argument má správny formát a typ.
 
-### 1.3 Generování XML
+### 1.3 Generovanie XML
 
-Po zpracování všech instrukcí se vytváří XML reprezentace programu. Třída `XMLVisitor` se stará o převod instrukcí na XML elementy. Každá instrukce se převede na element `<instruction>`, který obsahuje informace o pořadí, opcode a argumenty instrukce.
+Po spracovaní všetkých inštrukcií sa vytvára XML reprezentácia programu. Trieda `XMLVisitor` sa stará o prevod inštrukcií na XML elementy. Každá inštrukcia sa prevedie na element `<instruction>`, ktorý obsahuje informácie o poradí, opcode a argumenty inštrukcie.
+
 
